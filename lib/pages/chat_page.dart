@@ -10,52 +10,52 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final authC = Get.find<AuthController>();
     final List<Widget> myChat = List.generate(
-        10,
-        (index) => Material(
-              elevation: 2,
-              child: ListTile(
-                onTap: () {},
-                leading: const CircleAvatar(
-                  child: Icon(Icons.person),
-                ),
-                title: const Text("Nama"),
-                subtitle: Text("Keterangan ${index + 1}"),
+        20,
+        (index) => ListTile(
+              onTap: () {},
+              leading: const CircleAvatar(
+                child: Icon(Icons.person),
               ),
+              title: const Text("Nama"),
+              subtitle: Text("Keterangan ${index + 1}"),
             )).reversed.toList();
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  const Text(
-                    "Chats",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Material(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.black,
-                    child: InkWell(
-                      radius: 100,
-                      onTap: () {
-                        Get.toNamed(NameRoute.profilePage);
-                      },
-                      child: const Icon(
-                        Icons.person,
-                        color: Colors.white,
-                      ),
+            Material(
+              elevation: 2,
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    const Text(
+                      "Chats",
+                      style: TextStyle(fontSize: 20),
                     ),
-                  )
-                ],
+                    Material(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.black,
+                      child: InkWell(
+                        radius: 100,
+                        onTap: () {
+                          Get.toNamed(NameRoute.profilePage);
+                        },
+                        child: const Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Expanded(
                 child: ListView.builder(
-              itemCount: 10,
+              itemCount: myChat.length,
               itemBuilder: (context, index) => myChat[index],
             )),
           ],

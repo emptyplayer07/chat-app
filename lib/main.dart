@@ -1,5 +1,5 @@
 import 'package:chat_app/controllers/auth_controller.dart';
-import 'package:chat_app/pages/splash_screen.dart';
+import 'package:chat_app/utils/splash_screen.dart';
 import 'package:chat_app/routes/name_route.dart';
 import 'package:chat_app/routes/route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
