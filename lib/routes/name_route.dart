@@ -5,4 +5,5 @@ abstract class NameRoute {
   static const profilePage = "/profile_page";
   static const chatRoomPage = "/chat_room_page";
   static const searchPersonPage = "/search_person_page";
+  static const updateStatusPage = "/update_status_page";
 }

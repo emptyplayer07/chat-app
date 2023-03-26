@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../utils/empty_screen.dart';
 
 class SearchPersonPage extends StatelessWidget {
@@ -15,9 +14,11 @@ class SearchPersonPage extends StatelessWidget {
             subtitle: const Text("0852669851060"),
             trailing: GestureDetector(
               onTap: () {},
-              child: Chip(label: Text("chat +")),
+              child: const Chip(label: Text("chat +")),
             ),
           ));
+
+  SearchPersonPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,8 @@ class SearchPersonPage extends StatelessWidget {
                         return countFriend[index];
                       },
                     )
-                  : EmptyScreen(),
+                  : const EmptyScreen(),
+              //CircularProgressIndicator(),
             )
           ],
         ),

@@ -1,4 +1,6 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:chat_app/controllers/auth_controller.dart';
+import 'package:chat_app/routes/name_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,19 +11,92 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final authC = Get.find<AuthController>();
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Text("Profil"),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
           ),
-          ElevatedButton(
+        ),
+        title: const Text(
+          "Profile",
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
             onPressed: () {
               authC.logout();
             },
-            child: Text("Keluar"),
-          )
+            icon: const Icon(
+              Icons.logout,
+              color: Colors.black,
+            ),
+          ),
         ],
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            AvatarGlow(
+              endRadius: 110,
+              glowColor: Colors.black,
+              child: Container(
+                margin: const EdgeInsets.all(20),
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(100),
+                    image: const DecorationImage(
+                      image: AssetImage("images/foto_profile.jpg"),
+                      fit: BoxFit.cover,
+                    )),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Ag Candra Nugroho",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const Text("candra@gmail.com"),
+            const SizedBox(
+              height: 30,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  ListTile(
+                    onTap: () {
+                      Get.toNamed(NameRoute.updateStatusPage);
+                    },
+                    leading: const Icon(Icons.note_add_outlined),
+                    title: const Text("Update Status"),
+                    trailing: const Icon(Icons.arrow_right),
+                  ),
+                  ListTile(
+                    onTap: () {},
+                    leading: const Icon(Icons.color_lens),
+                    title: const Text("Change Theme"),
+                    trailing: const Text("Light"),
+                  ),
+                ],
+              ),
+            ),
+            const Text("Version 1.0.0"),
+          ],
+        ),
       ),
     );
   }

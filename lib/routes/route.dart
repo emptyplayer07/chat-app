@@ -6,6 +6,7 @@ import 'package:chat_app/pages/login_page.dart';
 import 'package:chat_app/pages/profile_page.dart';
 import 'package:chat_app/pages/register_page.dart';
 import 'package:chat_app/pages/search_person_page.dart';
+import 'package:chat_app/pages/update_status_page.dart';
 import 'package:chat_app/routes/name_route.dart';
 import 'package:get/get.dart';
 
@@ -47,6 +48,12 @@ class RoutePageApp extends GetxController {
     GetPage(
       name: NameRoute.searchPersonPage,
       page: () => SearchPersonPage(),
-    )
+    ),
+
+    //update status page
+    GetPage(
+      name: NameRoute.updateStatusPage,
+      page: () => UpdateStatusPage(),
+    ),
   ];
 }
