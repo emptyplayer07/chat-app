@@ -1,3 +1,4 @@
+import 'package:chat_app/routes/name_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../utils/empty_screen.dart';
@@ -5,16 +6,24 @@ import '../utils/empty_screen.dart';
 class SearchPersonPage extends StatelessWidget {
   //const SearchPersonPage({super.key});
   final List<Widget> countFriend = List.generate(
-      0,
+      5,
       (index) => ListTile(
             leading: const CircleAvatar(
               child: Icon(Icons.person),
             ),
             title: const Text("Candra"),
             subtitle: const Text("0852669851060"),
-            trailing: GestureDetector(
-              onTap: () {},
-              child: const Chip(label: Text("chat +")),
+            trailing: InkWell(
+              borderRadius: BorderRadius.circular(50),
+              child: IconButton(
+                onPressed: () {
+                  Get.toNamed(NameRoute.chatRoomPage);
+                },
+                icon: const Icon(
+                  Icons.send,
+                ),
+                color: Colors.blue,
+              ),
             ),
           ));
 
@@ -24,7 +33,22 @@ class SearchPersonPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Search"),
+        backgroundColor: Colors.white,
+        elevation: 2,
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            )),
+        title: const Text(
+          "Search",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
         centerTitle: true,
       ),
       body: Padding(
@@ -66,7 +90,6 @@ class SearchPersonPage extends StatelessWidget {
                       },
                     )
                   : const EmptyScreen(),
-              //CircularProgressIndicator(),
             )
           ],
         ),
