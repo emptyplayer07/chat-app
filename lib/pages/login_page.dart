@@ -61,6 +61,13 @@ class LoginPage extends StatelessWidget {
                   Get.toNamed(NameRoute.registerPage);
                 },
                 child: const Text("Register")),
+            // const Center(child: Text("______________")),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     authC.loginWithGoogleSignInCoba();
+            //   },
+            //   child: const Text("Sign in with Google"),
+            // ),
           ],
         ),
       ),
