@@ -52,20 +52,12 @@ class ChatRoomPage extends StatelessWidget {
             child: Container(
               child: ListView(
                 children: [
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          child: Text("Halo"),
-                          color: Colors.blue,
-                        ),
-                        Text("18.00"),
-                      ],
-                    ),
-                    alignment: Alignment.centerRight,
-                  )
+                  itemChat(
+                    isSender: true,
+                  ),
+                  itemChat(
+                    isSender: false,
+                  ),
                 ],
               ),
             ),
@@ -110,6 +102,46 @@ class ChatRoomPage extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+// ignore: camel_case_types
+class itemChat extends StatelessWidget {
+  const itemChat({super.key, required this.isSender});
+
+  final bool isSender;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment:
+              isSender ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: isSender
+                      ? const BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                        )
+                      : const BorderRadius.only(
+                          bottomRight: Radius.circular(10),
+                        )),
+              child: const Text(
+                "Haloaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            const Text("18.00"),
+          ],
+        ),
       ),
     );
   }
