@@ -46,7 +46,7 @@ class ProfilePage extends StatelessWidget {
           children: [
             AvatarGlow(
               endRadius: 110,
-              glowColor: Colors.black,
+              glowColor: Colors.blue,
               child: Container(
                 margin: const EdgeInsets.all(20),
                 width: 200,

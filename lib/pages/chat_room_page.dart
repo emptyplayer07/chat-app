@@ -1,3 +1,4 @@
+import 'package:chat_app/controllers/textfield/chat_room_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +7,7 @@ class ChatRoomPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final txtChatC = Get.put(TxtChatRoomController());
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 90,
@@ -71,6 +73,7 @@ class ChatRoomPage extends StatelessWidget {
                 Expanded(
                   child: Container(
                     child: TextField(
+                      controller: txtChatC.fieldChat,
                       decoration: InputDecoration(
                         prefixIcon: IconButton(
                           onPressed: () {},

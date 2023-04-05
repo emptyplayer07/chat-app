@@ -1,3 +1,4 @@
+import 'package:chat_app/controllers/textfield/update_status_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,6 +7,7 @@ class UpdateStatusPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final txtUpdSts = Get.put(TxtUpdateStatusController());
     return Scaffold(
       appBar: AppBar(
         elevation: 2,
@@ -28,6 +30,7 @@ class UpdateStatusPage extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              controller: txtUpdSts.fieldStatus,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(
                   vertical: 25,

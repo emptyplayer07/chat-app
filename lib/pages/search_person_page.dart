@@ -1,3 +1,4 @@
+import 'package:chat_app/controllers/textfield/search_person_controller.dart';
 import 'package:chat_app/routes/name_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,6 +32,7 @@ class SearchPersonPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final txtSearchC = Get.put(TxtSearchPersonController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -60,6 +62,7 @@ class SearchPersonPage extends StatelessWidget {
               elevation: 4,
               borderRadius: BorderRadius.circular(50),
               child: TextField(
+                controller: txtSearchC.fieldSearch,
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                       onPressed: () {
