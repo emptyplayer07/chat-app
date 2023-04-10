@@ -33,9 +33,10 @@ class MyApp extends StatelessWidget {
                   return GetMaterialApp(
                       debugShowCheckedModeBanner: false,
                       //initialRoute: NameRoute.loginPage,
-                      initialRoute: snapshot.data != null
-                          ? NameRoute.chatPage
-                          : NameRoute.loginPage,
+                      initialRoute:
+                          snapshot.data != null && snapshot.data!.emailVerified
+                              ? NameRoute.chatPage
+                              : NameRoute.loginPage,
                       getPages: RoutePageApp.pages);
                 } else {
                   return const CircularProgressIndicator();
