@@ -1,7 +1,6 @@
 import 'package:chat_app/routes/name_route.dart';
 import 'package:firebase_auth/firebase_auth.dart'; //FirebaseAuth
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart'; // Google Sign In
 
 class AuthController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;

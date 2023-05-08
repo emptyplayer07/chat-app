@@ -1,5 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:chat_app/controllers/auth_controller.dart';
+import 'package:chat_app/controllers/cloud_firestore.dart';
 import 'package:chat_app/routes/name_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cloudFirestoreC = Get.put(CloudFirestore());
     final authC = Get.find<AuthController>();
     return Scaffold(
       backgroundColor: Colors.white,
@@ -98,6 +100,8 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton:
+          FloatingActionButton(onPressed: cloudFirestoreC.addData),
     );
   }
 }
