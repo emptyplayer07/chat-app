@@ -100,8 +100,8 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton:
-          FloatingActionButton(onPressed: cloudFirestoreC.addData),
+      //floatingActionButton:
+      //FloatingActionButton(onPressed: cloudFirestoreC.addData),
     );
   }
 }

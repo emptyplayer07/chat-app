@@ -1,9 +1,12 @@
 import 'package:chat_app/routes/name_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart'; //FirebaseAuth
 import 'package:get/get.dart';
+import 'cloud_firestore.dart';
 
 class AuthController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
   Stream<User?> streamAuthStatus() {
     return FirebaseAuth.instance.authStateChanges();
@@ -59,12 +62,14 @@ class AuthController extends GetxController {
 
   void register(String email, String password) async {
     try {
+      CloudFirestore cloudFirestore = CloudFirestore();
       UserCredential credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
       await credential.user!.sendEmailVerification();
+      cloudFirestore.addData(email, "no name");
       Get.defaultDialog(
         title: "Warning",
         middleText: "Kami sudah mengirimkan email verification ke $email",

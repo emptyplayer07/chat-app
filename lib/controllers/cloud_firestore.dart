@@ -13,20 +13,17 @@ class CloudFirestore extends GetxController {
     }
   }
 
-  void addData() async {
+  void addData(String email, String nama) async {
     try {
+      final userCredential = FirebaseAuth.instance.currentUser;
       CollectionReference addData =
           firebaseFirestore.collection("${getDataUser()}");
 
       await addData.add({
-        "nama": "candra",
-        "umur": 25,
+        "nama": nama,
+        "email": email,
+        "createdAt": userCredential!.metadata.creationTime!.toIso8601String(),
       });
-
-      Get.defaultDialog(
-        title: "Succes",
-        middleText: "succces add data",
-      );
     } catch (e) {
       Get.defaultDialog(title: "warning", middleText: "$e");
     }

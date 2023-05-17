@@ -1,4 +1,5 @@
 import 'package:chat_app/controllers/auth_controller.dart';
+import 'package:chat_app/controllers/cloud_firestore.dart';
 import 'package:chat_app/controllers/textfield/register_controller.dart';
 import 'package:chat_app/routes/name_route.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final registerC = Get.find<RegisterController>();
     final authC = Get.put(AuthController());
+    //final cloudC = Get.put(CloudFirestore());
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.all(20),
@@ -41,7 +43,7 @@ class RegisterPage extends StatelessWidget {
             height: 30,
           ),
           ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 authC.register(registerC.email.text, registerC.password.text);
               },
               child: const Text("Register")),
