@@ -72,7 +72,8 @@ class ProfilePage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text("${authC.getDataUser()}"),
+            //Text("${authC.getDataUser()}"),
+            Text("${authC.userModel.email}"),
             const SizedBox(
               height: 30,
             ),
