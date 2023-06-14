@@ -65,15 +65,15 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              "Ag Candra Nugroho",
-              style: TextStyle(
+            Text(
+              "${cloudFirestoreC.userModel.nama}",
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
+            Text("${cloudFirestoreC.userModel.email}"),
             //Text("${authC.getDataUser()}"),
-            Text("${authC.userModel.email}"),
             const SizedBox(
               height: 30,
             ),

@@ -25,7 +25,6 @@ class CloudFirestore extends GetxController {
       nama: currUserByDoc['nama'],
       email: currUserByDoc['email'],
     );
-    print(userModel);
     return userModel;
   }
 

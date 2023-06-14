@@ -1,4 +1,5 @@
 import 'package:chat_app/controllers/auth_controller.dart';
+import 'package:chat_app/controllers/cloud_firestore.dart';
 import 'package:chat_app/utils/splash_screen.dart';
 import 'package:chat_app/routes/name_route.dart';
 import 'package:chat_app/routes/route.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
   // ignore: prefer_const_constructors_in_immutables
   MyApp({super.key});
   final authC = Get.put(AuthController(), permanent: true);
+  final cloudC = Get.put(CloudFirestore());
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +32,29 @@ class MyApp extends StatelessWidget {
               stream: authC.streamAuthStatus(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.active) {
-                  return GetMaterialApp(
-                      debugShowCheckedModeBanner: false,
-                      //initialRoute: NameRoute.loginPage,
-                      initialRoute:
-                          snapshot.data != null && snapshot.data!.emailVerified
-                              ? NameRoute.chatPage
-                              : NameRoute.loginPage,
-                      getPages: RoutePageApp.pages);
+                  if (snapshot.data != null && snapshot.data!.emailVerified) {
+                    return FutureBuilder(
+                        future: cloudC.readDataUserByDoc(),
+                        builder: (context, snapshot) {
+                          return GetMaterialApp(
+                              debugShowCheckedModeBanner: false,
+                              //initialRoute: NameRoute.loginPage,
+                              initialRoute: NameRoute.chatPage,
+                              //snapshot.data != null && snapshot.data!.emailVerified
+                              //? NameRoute.chatPage
+                              //  : NameRoute.loginPage,
+                              getPages: RoutePageApp.pages);
+                        });
+                  } else {
+                    return GetMaterialApp(
+                        debugShowCheckedModeBanner: false,
+                        //initialRoute: NameRoute.loginPage,
+                        initialRoute: NameRoute.loginPage,
+                        // snapshot.data != null && snapshot.data!.emailVerified
+                        //   ? NameRoute.chatPage
+                        // : NameRoute.loginPage,
+                        getPages: RoutePageApp.pages);
+                  }
                 } else {
                   return const CircularProgressIndicator();
                 }
