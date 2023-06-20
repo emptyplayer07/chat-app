@@ -1,7 +1,6 @@
-import 'package:chat_app/models/user_model.dart';
 import 'package:chat_app/routes/name_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart'; //FirebaseAuth
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'cloud_firestore.dart';
 
@@ -10,7 +9,6 @@ class AuthController extends GetxController {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
   CloudFirestore cloudFirestore = CloudFirestore();
-  UserModel userModel = UserModel();
 
   Stream<User?> streamAuthStatus() {
     return FirebaseAuth.instance.authStateChanges();

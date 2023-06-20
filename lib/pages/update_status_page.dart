@@ -10,7 +10,7 @@ class UpdateStatusPage extends StatelessWidget {
     final txtUpdSts = Get.put(TxtUpdateStatusController());
     return Scaffold(
       appBar: AppBar(
-        elevation: 2,
+        elevation: 1,
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {

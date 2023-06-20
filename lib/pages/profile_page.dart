@@ -47,15 +47,14 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             AvatarGlow(
-              endRadius: 110,
+              endRadius: 100,
               glowColor: Colors.blue,
               child: Container(
                 margin: const EdgeInsets.all(20),
                 width: 200,
                 height: 200,
                 decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(200),
                     image: const DecorationImage(
                       image: AssetImage("images/foto_profile.jpg"),
                       fit: BoxFit.cover,
@@ -73,7 +72,6 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             Text("${cloudFirestoreC.userModel.email}"),
-            //Text("${authC.getDataUser()}"),
             const SizedBox(
               height: 30,
             ),
@@ -101,8 +99,6 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
-      //floatingActionButton:
-      //FloatingActionButton(onPressed: cloudFirestoreC.addData),
     );
   }
 }
