@@ -1,3 +1,4 @@
+import 'package:chat_app/controllers/cloud_firestore.dart';
 import 'package:chat_app/controllers/textfield/update_status_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,8 @@ class UpdateStatusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final txtUpdSts = Get.put(TxtUpdateStatusController());
+    final cloudFirestoreC = Get.put(CloudFirestore());
+
     return Scaffold(
       appBar: AppBar(
         elevation: 1,

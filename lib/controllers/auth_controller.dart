@@ -71,7 +71,7 @@ class AuthController extends GetxController {
         password: password,
       );
       await credential.user!.sendEmailVerification();
-      cloudFirestore.addDataUsersByRegis(email, "no name");
+      cloudFirestore.addDataUsersByRegis(email, "no name", "no image", " ");
       Get.defaultDialog(
         title: "Warning",
         middleText: "Kami sudah mengirimkan email verification ke $email",

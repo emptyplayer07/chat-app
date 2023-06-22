@@ -12,6 +12,9 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final cloudFirestoreC = Get.put(CloudFirestore());
     final authC = Get.find<AuthController>();
+
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -51,14 +54,21 @@ class ProfilePage extends StatelessWidget {
               glowColor: Colors.blue,
               child: Container(
                 margin: const EdgeInsets.all(20),
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(200),
-                    image: const DecorationImage(
-                      image: AssetImage("images/foto_profile.jpg"),
-                      fit: BoxFit.cover,
-                    )),
+                width: screenWidth * 0.5,
+                height: screenHeight * 0.5,
+                child: cloudFirestoreC.userModel.imgUrl == "no image"
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset(
+                          "images/foto_profile.jpg",
+                          fit: BoxFit.cover,
+                        ))
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.asset(
+                          "images/user_icon.png",
+                          fit: BoxFit.cover,
+                        )),
               ),
             ),
             const SizedBox(
@@ -73,7 +83,7 @@ class ProfilePage extends StatelessWidget {
             ),
             Text("${cloudFirestoreC.userModel.email}"),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             Expanded(
               child: Column(

@@ -1,4 +1,5 @@
 import 'package:chat_app/controllers/auth_controller.dart';
+import 'package:chat_app/controllers/cloud_firestore.dart';
 import 'package:chat_app/routes/name_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authC = Get.find<AuthController>();
+    final cloudFirestoreC = Get.put(CloudFirestore());
     final List<Widget> myChat = List.generate(
         20,
         (index) => ListTile(
@@ -35,18 +37,29 @@ class ChatPage extends StatelessWidget {
                       "Chats",
                       style: TextStyle(fontSize: 20),
                     ),
-                    Material(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.black,
+                    SizedBox(
+                      width: 30,
+                      height: 30,
                       child: InkWell(
                         radius: 100,
                         onTap: () {
                           Get.toNamed(NameRoute.profilePage);
                         },
-                        child: const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                        ),
+                        child: cloudFirestoreC.userModel.imgUrl == "no image"
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image.asset(
+                                  "images/foto_profile.jpg",
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image.asset(
+                                  "images/user_icon.png",
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                       ),
                     )
                   ],
