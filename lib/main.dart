@@ -38,21 +38,13 @@ class MyApp extends StatelessWidget {
                         builder: (context, snapshot) {
                           return GetMaterialApp(
                               debugShowCheckedModeBanner: false,
-                              //initialRoute: NameRoute.loginPage,
                               initialRoute: NameRoute.chatPage,
-                              //snapshot.data != null && snapshot.data!.emailVerified
-                              //? NameRoute.chatPage
-                              //  : NameRoute.loginPage,
                               getPages: RoutePageApp.pages);
                         });
                   } else {
                     return GetMaterialApp(
                         debugShowCheckedModeBanner: false,
-                        //initialRoute: NameRoute.loginPage,
                         initialRoute: NameRoute.loginPage,
-                        // snapshot.data != null && snapshot.data!.emailVerified
-                        //   ? NameRoute.chatPage
-                        // : NameRoute.loginPage,
                         getPages: RoutePageApp.pages);
                   }
                 } else {

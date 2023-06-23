@@ -54,8 +54,8 @@ class ProfilePage extends StatelessWidget {
               glowColor: Colors.blue,
               child: Container(
                 margin: const EdgeInsets.all(20),
-                width: screenWidth * 0.5,
-                height: screenHeight * 0.5,
+                width: Get.width * 1,
+                height: Get.height * 1,
                 child: cloudFirestoreC.userModel.imgUrl == "no image"
                     ? ClipRRect(
                         borderRadius: BorderRadius.circular(100),
@@ -74,12 +74,21 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Text(
-              "${cloudFirestoreC.userModel.nama}",
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "${cloudFirestoreC.userModel.nama}",
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.edit),
+                )
+              ],
             ),
             Text("${cloudFirestoreC.userModel.email}"),
             const SizedBox(
